@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stream Lab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <h1>🎥 Stream Lab</h1>
+        <p>
+          A plain HTML/CSS/JS toolkit for screen demos: capture a screen/window,
+          sample colors from your stream, record clips, and preview output.
+        </p>
+      </header>
+
+      <section class="controls" aria-label="Capture controls">
+        <button id="start-capture" type="button">Start screen/window capture</button>
+        <button id="stop-capture" type="button" disabled>Stop capture</button>
+        <button id="toggle-pip" type="button" disabled>Open Picture-in-Picture</button>
+      </section>
+
+      <section class="controls" aria-label="Recording controls">
+        <button id="start-record" type="button" disabled>Start recording</button>
+        <button id="stop-record" type="button" disabled>Stop recording</button>
+        <a id="download-link" download="stream-lab-recording.webm" hidden>Download latest recording</a>
+      </section>
+
+      <section class="preview-grid">
+        <article class="panel">
+          <h2>Live stream preview</h2>
+          <video id="preview" autoplay playsinline muted></video>
+          <p class="hint">
+            Tip: click inside the video to sample a pixel color from the current frame.
+          </p>
+        </article>
+
+        <article class="panel">
+          <h2>Color picker from stream</h2>
+          <div class="color-row">
+            <div id="swatch" aria-hidden="true"></div>
+            <div>
+              <p><strong>HEX:</strong> <span id="hex-color">#000000</span></p>
+              <p><strong>RGB:</strong> <span id="rgb-color">rgb(0, 0, 0)</span></p>
+            </div>
+          </div>
+          <button id="copy-color" type="button" disabled>Copy HEX</button>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>Other streaming helpers</h2>
+        <ul>
+          <li>Captures full screen, a window, or browser tab via the Screen Capture API.</li>
+          <li>Records to WebM (MediaRecorder) and provides instant download.</li>
+          <li>Supports Picture-in-Picture for floating monitor view while presenting.</li>
+          <li>Shows live stream resolution and frame rate when available.</li>
+        </ul>
+        <p id="stream-meta">Stream info: not active</p>
+      </section>
+
+      <p id="status" role="status" aria-live="polite">Ready.</p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
